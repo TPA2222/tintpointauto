@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TPA | Tint Point Auto - Premium Automotive Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00ff9d;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #f5f5f5;
+            --gray: #2a2a2a;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background-color: rgba(10, 10, 10, 0.95);
+            padding: 1.5rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            transition: var(--transition);
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: linear-gradient(to right, var(--primary), #00e1ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.6));
+            z-index: 1;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.8;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: linear-gradient(to right, var(--light), #c5c5c5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--primary);
+            color: var(--darker);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 255, 157, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 255, 157, 0.4);
+        }
+
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .dark-bg {
+            background-color: #2d2d2d;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            font-size: clamp(2rem, 4vw, 3rem);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--primary), transparent);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background-color: var(--gray);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(0, 255, 157, 0.2);
+        }
+
+        .service-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-img {
+            transform: scale(1.03);
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-content h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .warranty-badge {
+            background-color: var(--primary);
+            color: var(--darker);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .service-list {
+            list-style-type: none;
+            margin: 1.5rem 0;
+        }
+
+        .service-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .service-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-lightbox:hover {
+            color: var(--primary);
+        }
+
+        .lightbox-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            padding: 1rem;
+            z-index: 10;
+            transition: var(--transition);
+            opacity: 0.7;
+        }
+
+        .lightbox-arrow:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+
+        .lightbox-arrow-left {
+            left: 2rem;
+        }
+
+        .lightbox-arrow-right {
+            right: 2rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background-color: var(--gray);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            font-size: 4rem;
+            color: rgba(0, 255, 157, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .stars {
+            color: #ffd700;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-text {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            color: var(--darker);
+            transform: translateY(-3px);
+        }
+
+        .booking-form {
+            max-width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: var(--darker);
+            border: 1px solid var(--gray);
+            color: var(--light);
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(0, 255, 157, 0.2);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-message {
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 6px;
+            display: none;
+        }
+
+        .form-message.success {
+            background-color: rgba(0, 255, 157, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            display: block;
+        }
+
+        .form-message.error {
+            background-color: rgba(255, 0, 0, 0.1);
+            border: 1px solid #ff4d4d;
+            color: #ff4d4d;
+            display: block;
+        }
+
+        footer {
+            background-color: var(--darker);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--primary), #00e1ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .social-media-section {
+            background-color: var(--darker);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .social-media-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-media-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .social-media-link:hover {
+            color: var(--primary);
+            background-color: rgba(0, 255, 157, 0.1);
+        }
+
+        .social-media-icon {
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .lightbox-arrow {
+                font-size: 2rem;
+                padding: 0.5rem;
+            }
+
+            .lightbox-arrow-left {
+                left: 0.5rem;
+            }
+
+            .lightbox-arrow-right {
+                right: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/logo.jpg" alt="Tint Point Auto Logo" class="logo-img">
+                <span class="logo-text">TINT POINT AUTO</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="images/back.png" alt="Premium Car Tinting" class="hero-bg" loading="lazy">
+        <div class="hero-content">
+            <h1>Elevate Your Vehicle With Premium Tinting</h1>
+            <p>Professional automotive window tinting services in London with a lifetime warranty and exceptional craftsmanship.</p>
+            <a href="#contact" class="cta-button">
+                <i class="fas fa-phone"></i> 07775 824 818
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <!-- Window Tinting (with image) -->
+            <div class="service-card">
+                <img src="images/tint2.png" alt="Window Tinting" class="service-img" loading="lazy">
+                <div class="service-content">
+                    <h3>Window Tinting</h3>
+                    <ul class="service-list">
+                        <li>Premium UV protection</li>
+                        <li>Heat reduction</li>
+                        <li>Privacy options</li>
+                    </ul>
+                    <div class="warranty-badge">Lifetime Warranty</div>
+                </div>
+            </div>
+
+            <!-- Chameleon Tinting (no image) -->
+            <div class="service-card">
+                <div class="service-content" style="padding: 2rem;">
+                    <h3>Chameleon Tinting</h3>
+                    <ul class="service-list">
+                        <li>Color-shifting films</li>
+                        <li>Unique appearance</li>
+                        <li>Same UV protection</li>
+                    </ul>
+                    <div class="warranty-badge">Lifetime Warranty</div>
+                </div>
+            </div>
+
+            <!-- Headlight Tinting (no image) -->
+            <div class="service-card">
+                <div class="service-content" style="padding: 2rem;">
+                    <h3>Headlight Tinting</h3>
+                    <ul class="service-list">
+                        <li>Smoked or colored</li>
+                        <li>Protective coating</li>
+                        <li>Maintains visibility</li>
+                    </ul>
+                    <div class="warranty-badge">Lifetime Warranty</div>
+                </div>
+            </div>
+
+            <!-- De-chroming (no image, updated points) -->
+            <div class="service-card">
+                <div class="service-content" style="padding: 2rem;">
+                    <h3>De-chroming</h3>
+                    <ul class="service-list">
+                        <li>Chrome delete</li>
+                        <li>Factory look</li>
+                        <li>Ready for sale</li>
+                    </ul>
+                    <div class="warranty-badge">Lifetime Warranty</div>
+                </div>
+            </div>
+
+            <!-- Tint Removal (no image) -->
+            <div class="service-card">
+                <div class="service-content" style="padding: 2rem;">
+                    <h3>Tint Removal</h3>
+                    <ul class="service-list">
+                        <li>Professional removal</li>
+                        <li>No residue</li>
+                        <li>Glass protection</li>
+                    </ul>
+                    <div class="warranty-badge">Lifetime Warranty</div>
+                </div>
+            </div>
+
+            <!-- Warranty Card -->
+            <div class="service-card" style="background: linear-gradient(135deg, var(--darker), var(--gray));">
+                <div class="service-content">
+                    <h3>Our Warranty</h3>
+                    <p>We provide lifetime warranty on all our services to give our customers top quality assurance and peace of mind!</p>
+                    <div class="warranty-badge" style="margin-top: 2rem;">All Services Covered</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section dark-bg">
+        <h2 class="section-title">Our Work</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="images/tint1.png" alt="Tinted Sedan" class="gallery-img" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/tint2.png" alt="Tinted Coupe" class="gallery-img" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/tint3.png" alt="Tinted SUV" class="gallery-img" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/tint4.png" alt="Tinted Luxury Car" class="gallery-img" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/tint5.png" alt="Tinted Hatchback" class="gallery-img" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/tint6.png" alt="Tinted 4x4" class="gallery-img" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/tint7.png" alt="Tinted Sedan" class="gallery-img" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/tint8.png" alt="Tinted Coupe" class="gallery-img" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/tint9.png" alt="Tinted SUV" class="gallery-img" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/tint10.png" alt="Tinted Luxury Car" class="gallery-img" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/tint11.png" alt="Tinted Hatchback" class="gallery-img" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section">
+        <h2 class="section-title">Client Testimonials</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">The team at Tint Point Auto transformed my Mercedes with their premium tinting. The attention to detail is unmatched and the heat reduction is remarkable.</p>
+                <p class="testimonial-author">- James R.</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">Had my Range Rover tinted here and couldn't be happier. Professional service from start to finish, and my windows look flawless.</p>
+                <p class="testimonial-author">- Sarah K.</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">They removed my old bubbled tint and installed new film in just a few hours. The difference is night and day - highly recommend!</p>
+                <p class="testimonial-author">- David M.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section dark-bg">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h3>Location</h3>
+                        <p>Serving London and surrounding areas</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div>
+                        <h3>Phone</h3>
+                        <p>07775 824 818</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h3>Email</h3>
+                        <p>info@tintpointauto.com</p>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://instagram.com/tintpointauto" class="social-link" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://linktr.ee/tintpointauto" class="social-link" target="_blank">
+                        <i class="fas fa-link"></i>
+                    </a>
+                </div>
+            </div>
+            <form id="contactForm" class="booking-form" action="https://formspree.io/f/mldbkevy" method="POST">
+                <div id="formMessage" class="form-message"></div>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="_replyto" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label>Service</label>
+                    <select name="service" required>
+                        <option value="">Select Service</option>
+                        <option value="window_tinting">Window Tinting</option>
+                        <option value="chameleon_tinting">Chameleon Tinting</option>
+                        <option value="headlight_tinting">Headlight Tinting</option>
+                        <option value="dechroming">De-chroming</option>
+                        <option value="tint_removal">Tint Removal</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-media-section">
+        <h3>Don't delay, contact us today for any enquiries</h3>
+        <div class="social-media-links">
+            <a href="https://tiktok.com/@tintpointauto" class="social-media-link" target="_blank">
+                <i class="fab fa-tiktok social-media-icon"></i>
+                <span>tintpointauto</span>
+            </a>
+            <a href="https://instagram.com/tintpointauto" class="social-media-link" target="_blank">
+                <i class="fab fa-instagram social-media-icon"></i>
+                <span>tintpointauto</span>
+            </a>
+            <a href="https://wa.me/447775824818" class="social-media-link" target="_blank">
+                <i class="fab fa-whatsapp social-media-icon"></i>
+                <span>07775 824 818</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">TINT POINT AUTO</div>
+        <div class="footer-links">
+            <a href="#services">Services</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#testimonials">Reviews</a>
+            <a href="#contact">Contact</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+        <p class="copyright">© 2023 Tint Point Auto. All rights reserved.</p>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-arrow lightbox-arrow-left">&lt;</span>
+        <span class="lightbox-arrow lightbox-arrow-right">&gt;</span>
+        <span class="close-lightbox">&times;</span>
+        <div class="lightbox-content">
+            <img src="" alt="" class="lightbox-img" id="lightbox-img">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lightbox functionality
+            const galleryItems = document.querySelectorAll('.gallery-item, .service-img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const closeLightbox = document.querySelector('.close-lightbox');
+            let currentImageIndex = 0;
+            const images = Array.from(galleryItems).map(item => item.querySelector('img').src);
+            
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    currentImageIndex = index;
+                    lightboxImg.src = images[currentImageIndex];
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            function showImage(index) {
+                if (index >= 0 && index < images.length) {
+                    currentImageIndex = index;
+                    lightboxImg.src = images[currentImageIndex];
+                }
+            }
+
+            document.querySelector('.lightbox-arrow-left').addEventListener('click', function(e) {
+                e.stopPropagation();
+                showImage(currentImageIndex - 1);
+            });
+
+            document.querySelector('.lightbox-arrow-right').addEventListener('click', function(e) {
+                e.stopPropagation();
+                showImage(currentImageIndex + 1);
+            });
+
+            closeLightbox.addEventListener('click', function() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (lightbox.classList.contains('active')) {
+                    if (e.key === 'Escape') {
+                        lightbox.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    } else if (e.key === 'ArrowLeft') {
+                        showImage(currentImageIndex - 1);
+                    } else if (e.key === 'ArrowRight') {
+                        showImage(currentImageIndex + 1);
+                    }
+                }
+            });
+
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            const formMessage = document.getElementById('formMessage');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(contactForm);
+                
+                const submitButton = contactForm.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.innerHTML;
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitButton.disabled = true;
+                
+                fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        formMessage.textContent = 'Message sent successfully! We will contact you soon.';
+                        formMessage.className = 'form-message success';
+                        contactForm.reset();
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                })
+                .catch(error => {
+                    formMessage.textContent = 'There was a problem sending your message. Please try again later or call us directly.';
+                    formMessage.className = 'form-message error';
+                })
+                .finally(() => {
+                    submitButton.innerHTML = originalButtonText;
+                    submitButton.disabled = false;
+                });
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
